@@ -39,6 +39,12 @@ view: orders {
     sql: ${TABLE}.user_id ;;
   }
 
+  dimension: campaign_status {
+    type: string
+    # hidden: yes
+    sql: concat(${TABLE}.campaign, "-", ${TABLE}.status);;
+  }
+
   measure: count {
     type: count
     drill_fields: [id, users.last_name, users.id, users.first_name, order_items.count]
